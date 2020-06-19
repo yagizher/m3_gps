@@ -89,16 +89,14 @@ end)
 
 AddEventHandler('playerDropped', function()
 	-- Save the source in case we lose it (which happens a lot)
-	local _source 		= source
-	local xPlayer 		= ESX.GetPlayerFromId(_source)
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
 
 	-- Did the player ever join?
 	if _source ~= nil then
 		
-
 		-- Is it worth telling all clients to refresh?
 		Citizen.Wait(5000)
 		TriggerEvent('m3:gps:dropBlip', _source)
 	end
 end)
-
