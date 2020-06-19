@@ -27,12 +27,7 @@ RegisterNetEvent('m3:gps:Used')
 AddEventHandler('m3:gps:Used', function()
 	PlayerData = ESX.GetPlayerData()
 
-	if PlayerData.job.name == Config.Job1 or
-	PlayerData.job.name == Config.Job2 or
-	PlayerData.job.name == Config.Job3 or
-	PlayerData.job.name == Config.Job4 or
-	PlayerData.job.name == Config.Job5 or 
-	PlayerData.job.name == Config.Job6 then
+	if PlayerData.job.name == Config.Job1 or Config.Job2 or Config.Job3 or Config.Job4 or Config.Job5 or Config.Job6 then
 		usedGps()
 	else
 		TriggerEvent('mythic_notify:client:SendAlert', { type = 'error', text = 'GPS aktifleştirme yetkisine sahip değilsin!'})
@@ -73,7 +68,7 @@ function GPSOn()
 		while (UpdateOnscreenKeyboard() == 0) do
 			DisableAllControlActions(0)
 			TriggerEvent('m3:invUseable', false)
-			Wait(0)
+			Citizen.Wait(0)
 		end
 		if (GetOnscreenKeyboardResult()) then
 			code = GetOnscreenKeyboardResult()
@@ -100,12 +95,7 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(5000)
 		if gpsrunning then
-			if PlayerData.job.name == Config.Job1 or
-			PlayerData.job.name == Config.Job2 or
-			PlayerData.job.name == Config.Job3 or
-			PlayerData.job.name == Config.Job4 or
-			PlayerData.job.name == Config.Job5 or
-			PlayerData.job.name == Config.Job6 then
+			if PlayerData.job.name == Config.Job1 or Config.Job2 or Config.Job3 or Config.Job4 or Config.Job5 or Config.Job6 then
 				ESX.TriggerServerCallback('m3:gps:getItemAmount', function(qtty)
 					if qtty > 0 then
 						TriggerEvent('m3:gps:updateBlips')
